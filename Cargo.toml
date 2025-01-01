@@ -1,0 +1,10 @@
+[package]
+name = "clip_stash"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "clip_stash"
+path = "src/lib/mod.rs"
+
+[dependencies]
