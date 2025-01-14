@@ -23,16 +23,15 @@ impl Default for Expires {
     }
 }
 
-impl FromStr for Expires{
+impl FromStr for Expires {
     type Err = ClipError;
-    fn from_str(raw: &str) -> Result<Self, Self::Err>{
-        if raw.is_empty(){
+    fn from_str(raw: &str) -> Result<Self, Self::Err> {
+        if raw.is_empty() {
             Ok(Self(None))
-        }else {
-            match Time::from_str(raw){
-                Ok(time)=> Ok(Self::new(time))
-                Err(e)=> Err(e.into())
-                
+        } else {
+            match Time::from_str(raw) {
+                Ok(time) => Ok(Self::new(time)),
+                Err(e) => Err(e.into()),
             }
         }
     }
