@@ -8,3 +8,5 @@ name = "clip_stash"
 path = "src/lib/mod.rs"
 
 [dependencies]
+serde = "1"
+serde_json = "1"
