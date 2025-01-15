@@ -18,6 +18,8 @@ pub struct Clip {
 
 impl TryFrom<Clip> for crate::domain::Clip {
     type Error = ClipError;
+    //this function is used to convert the Clip struct to the Clip domain struct
+    //how to use = Clip::try_from(clip)
     fn try_from(clip: Clip) -> Result<Self, Self::Error> {
         use crate::domain::clip::field;
         use std::str::FromStr;
@@ -32,4 +34,23 @@ impl TryFrom<Clip> for crate::domain::Clip {
             hits: field::Hits::new(u64::try_from(clip.hits)?),
         })
     }
+}
+
+/// A struct representing a request to get a clip by its shortcode.
+///
+/// # Fields
+///
+/// * `shortcode` - A string that uniquely identifies the clip within the crate's data module.
+pub struct GetClip {
+    pub(in crate::data) shortcode: String,
+}
+
+pub struct NewClip {
+    pub(in crate::data) clip_id: String,
+    pub(in crate::data) shortcode: String,
+    pub(in crate::data) content: String,
+    pub(in crate::data) title: Option<String>,
+    pub(in crate::data) posted: i64,
+    pub(in crate::data) expires: Option<NaiveDateTime>,
+    pub(in crate::data) password: Option<String>,
 }
