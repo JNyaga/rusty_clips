@@ -45,6 +45,21 @@ pub struct GetClip {
     pub(in crate::data) shortcode: String,
 }
 
+// from a shortcode to a GetClip structure
+impl From<ShortCode> for GetClip {
+    fn from(shortcode: ShortCode) -> Self {
+        GetClip {
+            shortcode: shortcode.into_inner(),
+        }
+    }
+}
+
+impl From<String> for GetClip {
+    fn from(shortcode: String) -> Self {
+        GetClip { shortcode }
+    }
+}
+
 pub struct NewClip {
     pub(in crate::data) clip_id: String,
     pub(in crate::data) shortcode: String,
